@@ -30,10 +30,10 @@
 
      <ion-item >
       <ion-label>Vrsta vozila:<span>*</span></ion-label>
-      <ion-select @ionChange='tipVozila=event.target.value' :value="tipVozila" okText="Okay" cancelText="Dismiss">
-        <ion-select-option @ionChange='tipVozila=event.target.value' @click="promenaTipVozila()"  value="putnicko">Putničko</ion-select-option>
-        <ion-select-option @ionChange='tipVozila=event.target.value' value="teretno">Teretno</ion-select-option>
-        <ion-select-option @ionChange='tipVozila=event.target.value' value="motocikli">Motocikli</ion-select-option>
+      <ion-select @ionChange='promeniTip' id="tip" okText="Okay" cancelText="Dismiss">
+        <ion-select-option value="putnicko">Putničko</ion-select-option>
+        <ion-select-option value="teretno">Teretno</ion-select-option>
+        <ion-select-option value="motocikli">Motocikli</ion-select-option>
       </ion-select>
     </ion-item>   
     
@@ -170,20 +170,18 @@ ion-toolbar{
 
 
 <script>
-
 export default {
   name: "home",
    data() {
      return{
         opstina: 1,
-        tipVozila: '',
-        promenaTipVozila: ''
+        tipVozila: 'teretno'
      }
     },
-     methods: {
-       promenaTipVozila: function(){
-        this.promenaTipVozila='sasd';
-     }
-  },
+    methods: {
+      promeniTip: function() {
+        this.tipVozila = document.getElementById('tip').value;
+      }
+    }
 };
 </script>
